@@ -23,7 +23,7 @@
 | `GET /api/health` | 不需要 token。微信进程、登录状态、wx-cli 读取状态（`needs_user_init`）、最后收到消息的时间、发送计数、反向连接状态 |
 | `POST /api/onebot/<action>` | `send_group_msg`、`send_private_msg`、`send_msg`、`get_group_list`、`get_group_info`、`get_group_member_list`、`get_group_member_info`、`get_msg`、`get_login_info`、`get_status`、`get_version_info`、`can_send_image`、`can_send_record` |
 | `GET /api/onebot/ws` | 正向 WebSocket：推事件、收动作 |
-| 反向 WebSocket | 主动连 `ONEBOT_REVERSE_URL`（默认 `ws://astrbot:6199/ws`），带 `X-Self-ID`、`X-Client-Role: Universal`、`Authorization`，断线指数退避重连（最长 60 秒） |
+| 反向 WebSocket | 主动连 `ONEBOT_REVERSE_URL`（默认 `ws://astrbot:6199/ws`），带 `X-Self-ID`、`X-Client-Role: Universal`、`Authorization`，断线指数退避重连（上限 60 秒，带 ±20% 抖动） |
 
 消息格式：
 
