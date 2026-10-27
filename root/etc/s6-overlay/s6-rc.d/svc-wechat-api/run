@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+# wechat-api: OneBot v11 gateway under /api/ (see /opt/wechat-api and docs/loagent-gateway.md).
+# Starts after the desktop (svc-de), which launches WeChat through /defaults/autostart.
+# It only reads through wx-cli's read commands; preparing wx-cli is left to the user.
+
+export HOME=/config
+export DISPLAY="${DISPLAY:-:1}"
+
+# wait for X so window queries work from the first status check
+for _ in $(seq 1 120); do
+  if xset q &>/dev/null; then
+    break
+  fi
+  sleep .5
+done
+
+mkdir -p /config/wechat-api
+chown abc:abc /config/wechat-api
+cd /config/wechat-api || exit 1
+exec s6-setuidgid abc /opt/wechat-api/.venv/bin/python -m wechat_api

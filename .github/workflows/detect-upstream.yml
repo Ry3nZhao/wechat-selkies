@@ -1,9 +1,9 @@
 name: Detect Upstream Package Updates
 
+# loagent-gateway pins the WeChat package in the Dockerfile and does not follow upstream
+# package updates automatically; run this by hand to see what upstream ships.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '23 */6 * * *'
 
 permissions:
   contents: write
