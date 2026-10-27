@@ -96,6 +96,11 @@ class Gateway:
     # ---- identity ----------------------------------------------------------------------
 
     @property
+    def wx_config_path(self) -> Path:
+        """Where wx-cli keeps its configuration for the abc user (on the /config volume)."""
+        return Path(self.cfg.wx_home) / ".wx-cli" / "config.json"
+
+    @property
     def self_id(self) -> int:
         return self.store.id_for(self.state.self_wxid, "user") if self.state.self_wxid else 0
 
@@ -136,8 +141,15 @@ class Gateway:
 
     async def check_reader(self) -> None:
         """Classify wx-cli's readiness with ``wx doctor`` (read-only; never repairs)."""
-        result = await self.wx.doctor()
         self.state.reader_checked_at = time.time()
+        if not self.wx_config_path.is_file():
+            if self.state.reader != READER_NEEDS_INIT:
+                log.warning("wx-cli is not set up (%s missing); receiving paused", self.wx_config_path)
+            self.state.reader = READER_NEEDS_INIT
+            self.state.reader_failed_checks = ["config.json"]
+            self.state.reader_detail = f"没有找到 wx-cli 的配置 {self.wx_config_path}"
+            return
+        result = await self.wx.doctor()
         self.state.reader_failed_checks = result.failed
         self.state.reader_detail = result.detail
         if result.ok:

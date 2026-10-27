@@ -99,6 +99,9 @@ def fake_x() -> FakeX:
 @pytest.fixture
 def make_gateway(tmp_path, fake_wx, fake_x):
     def make(ui_overrides: dict | None = None, **cfg_kwargs) -> Gateway:
+        # wx-cli as the user leaves it after setting it up by hand
+        (tmp_path / "home" / ".wx-cli").mkdir(parents=True, exist_ok=True)
+        (tmp_path / "home" / ".wx-cli" / "config.json").write_text("{}")
         cfg = Config(
             state_dir=str(tmp_path / "state"),
             wx_home=str(tmp_path / "home"),

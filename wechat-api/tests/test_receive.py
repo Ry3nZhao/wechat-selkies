@@ -146,6 +146,15 @@ async def test_missing_setup_pauses_receiving(make_gateway, fake_wx):
     assert {c[1] for c in fake_wx.calls} <= {"new-messages", "doctor"}
 
 
+async def test_no_wx_config_means_user_init(make_gateway, fake_wx):
+    gw = make_gateway()
+    gw.wx_config_path.unlink()
+    await gw.check_reader()
+    assert gw.state.reader == READER_NEEDS_INIT
+    assert gw.state.health()["reader"]["failed_checks"] == ["config.json"]
+    assert not any(c[1] == "doctor" for c in fake_wx.calls)
+
+
 async def test_unknown_shards_are_reported(make_gateway, fake_wx):
     gw = make_gateway()
     await poll(gw, fake_wx, {"messages": [], "meta": {"unknown_shards": ["message/message_3.db"]}})

@@ -74,6 +74,7 @@ async def handle_action(request: web.Request) -> web.Response:
 async def serve_ws(gw: Gateway, ws: web.WebSocketResponse | aiohttp.ClientWebSocketResponse, label: str) -> None:
     """Shared loop for forward and reverse connections: push events, answer actions."""
     send_lock = asyncio.Lock()
+    pending: set[asyncio.Task] = set()
 
     async def send(obj: dict[str, Any]) -> None:
         async with send_lock:
@@ -102,9 +103,13 @@ async def serve_ws(gw: Gateway, ws: web.WebSocketResponse | aiohttp.ClientWebSoc
                 await send(result)
 
             # Actions run concurrently so a slow send does not block get_* calls.
-            asyncio.create_task(run(req))
+            task = asyncio.create_task(run(req))
+            pending.add(task)
+            task.add_done_callback(pending.discard)
     finally:
         gw.sinks.discard(send)
+        for task in pending:
+            task.cancel()
         log.info("%s websocket closed", label)
 
 
