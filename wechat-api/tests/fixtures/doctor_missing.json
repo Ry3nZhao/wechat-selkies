@@ -1,0 +1,5 @@
+{"checks": [
+  {"name": "WeChat 进程", "ok": true, "detail": "PID 123", "fix": null},
+  {"name": "config.json", "ok": false, "detail": "missing", "fix": "..."},
+  {"name": "数据库密钥", "ok": false, "detail": "missing", "fix": "..."}
+]}

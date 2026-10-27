@@ -1,0 +1,33 @@
+{
+  "count": 7,
+  "messages": [
+    {"chat": "测试群", "username": "12345678@chatroom", "is_group": true, "chat_type": "group",
+     "timestamp": 1761530000, "time": "2026-10-27 09:53", "sender": "小明",
+     "content": "大家好", "type": "文本", "type_code": 1, "type_id": "text",
+     "sender_username": "wxid_xiaoming", "sender_contact_display": "王小明", "sender_group_nickname": "小明"},
+    {"chat": "测试群", "username": "12345678@chatroom", "is_group": true, "chat_type": "group",
+     "timestamp": 1761530005, "time": "2026-10-27 09:53", "sender": "小明",
+     "content": "@洛洛 帮我看看 @小红 的问题", "type": "文本", "type_code": 1, "type_id": "text",
+     "sender_username": "wxid_xiaoming", "sender_contact_display": "王小明", "sender_group_nickname": "小明"},
+    {"chat": "测试群", "username": "12345678@chatroom", "is_group": true, "chat_type": "group",
+     "timestamp": 1761530010, "time": "2026-10-27 09:53", "sender": "小红",
+     "content": "[引用] 这个怎么弄\n  ↳ 小明: 大家好", "type": "链接/文件", "type_code": 49, "type_id": "appmsg", "appmsg_type": 57,
+     "sender_username": "wxid_xiaohong", "sender_contact_display": "李小红", "sender_group_nickname": "小红"},
+    {"chat": "测试群", "username": "12345678@chatroom", "is_group": true, "chat_type": "group",
+     "timestamp": 1761530012, "time": "2026-10-27 09:53", "sender": "小红",
+     "content": "[图片] local_id=42", "type": "图片", "type_code": 3, "type_id": "image",
+     "sender_username": "wxid_xiaohong", "sender_contact_display": "李小红", "sender_group_nickname": "小红"},
+    {"chat": "张三", "username": "wxid_zhangsan", "is_group": false, "chat_type": "private",
+     "timestamp": 1761530020, "time": "2026-10-27 09:53", "sender": "",
+     "content": "在吗", "type": "文本", "type_code": 1, "type_id": "text"},
+    {"chat": "张三", "username": "wxid_zhangsan", "is_group": false, "chat_type": "private",
+     "timestamp": 1761530021, "time": "2026-10-27 09:53", "sender": "洛洛",
+     "content": "在的", "type": "文本", "type_code": 1, "type_id": "text"},
+    {"chat": "测试群", "username": "12345678@chatroom", "is_group": true, "chat_type": "group",
+     "timestamp": 1761530030, "time": "2026-10-27 09:53", "sender": "洛洛",
+     "content": "收到", "type": "文本", "type_code": 1, "type_id": "text",
+     "sender_username": "wxid_self", "sender_contact_display": "洛洛", "sender_group_nickname": "洛洛"}
+  ],
+  "new_state": {"12345678@chatroom": 1761530030, "wxid_zhangsan": 1761530021},
+  "meta": {"status": "ok", "unknown_shards": []}
+}

@@ -1,0 +1,6 @@
+{"sessions": [
+  {"chat": "测试群", "username": "12345678@chatroom", "is_group": true, "chat_type": "group", "unread": 0, "timestamp": 1761530030},
+  {"chat": "张三", "username": "wxid_zhangsan", "is_group": false, "chat_type": "private", "unread": 0, "timestamp": 1761530021},
+  {"chat": "同名", "username": "wxid_a", "is_group": false, "chat_type": "private", "unread": 0, "timestamp": 1},
+  {"chat": "同名", "username": "wxid_b", "is_group": false, "chat_type": "private", "unread": 0, "timestamp": 1}
+], "meta": {"status": "ok"}}

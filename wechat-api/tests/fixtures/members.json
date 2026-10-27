@@ -1,0 +1,7 @@
+[
+  {"username": "wxid_self", "display": "洛洛", "contact_display": "洛洛", "group_nickname": "洛洛", "is_owner": false},
+  {"username": "wxid_xiaoming", "display": "小明", "contact_display": "王小明", "group_nickname": "小明", "is_owner": true},
+  {"username": "wxid_xiaohong", "display": "小红", "contact_display": "李小红", "group_nickname": "小红", "is_owner": false},
+  {"username": "wxid_xiaohong2", "display": "小红帽", "contact_display": "赵小红帽", "group_nickname": "小红帽", "is_owner": false},
+  {"username": "wxid_zhangsan", "display": "张三丰", "contact_display": "张三", "group_nickname": "张三丰", "is_owner": false}
+]
