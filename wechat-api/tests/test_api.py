@@ -93,6 +93,23 @@ async def test_forward_websocket(client):
     await ws.close()
 
 
+async def test_login_detection_by_window_size():
+    from wechat_api.config import DEFAULT_UI
+    from wechat_api.ui import UiDriver
+
+    from conftest import FakeX
+
+    class Small(FakeX):
+        async def __call__(self, argv, stdin, timeout, capture):
+            if list(argv[:2]) == ["xdotool", "getwindowgeometry"]:
+                return 0, "X=372\nY=194\nWIDTH=280\nHEIGHT=380\n", ""
+            return await super().__call__(argv, stdin, timeout, capture)
+
+    assert await UiDriver(DEFAULT_UI, Small("微信")).detect_login() == ("login_screen", "微信")
+    assert await UiDriver(DEFAULT_UI, FakeX("微信")).detect_login() == ("logged_in", "微信")
+    assert (await UiDriver(DEFAULT_UI, FakeX("")).detect_login())[0] == "no_window"
+
+
 def test_backoff_is_exponential_and_capped():
     assert [backoff_delay(n, 60, jitter=0) for n in range(1, 9)] == [1, 2, 4, 8, 16, 32, 60, 60]
 

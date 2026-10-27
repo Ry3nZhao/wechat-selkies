@@ -143,7 +143,8 @@ class UiDriver:
         wins = await self.windows()
         min_w, min_h = self.ui.get("min_main_window", [600, 400])
         titles = set(self.ui.get("logged_in_titles", []))
-        big = [w for w in wins if w.width >= 300 and w.height >= 300]
+        # The login window (QR code) is small, e.g. 280x380 titled "微信" on 4.1.13.
+        big = [w for w in wins if w.width >= 200 and w.height >= 200]
         if not big:
             return LOGIN_NO_WINDOW, ""
         for w in big:
