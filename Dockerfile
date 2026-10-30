@@ -31,8 +31,8 @@ FROM ghcr.io/linuxserver/baseimage-selkies:ubuntunoble@sha256:7cab02f9222937ad1e
 LABEL org.opencontainers.image.title="WeChat Selkies (LoAgent gateway)"
 LABEL org.opencontainers.image.description="WeChat Linux client in browser via Selkies WebRTC, with a OneBot v11 API"
 LABEL org.opencontainers.image.authors="nickrunning"
-LABEL org.opencontainers.image.source="https://github.com/RuihanRZhao/wechat-selkies"
-LABEL org.opencontainers.image.documentation="https://github.com/RuihanRZhao/wechat-selkies/blob/loagent-gateway/docs/loagent-gateway.md"
+LABEL org.opencontainers.image.source="https://github.com/Ry3nZhao/wechat-selkies"
+LABEL org.opencontainers.image.documentation="https://github.com/Ry3nZhao/wechat-selkies/blob/feat/loagent-gateway/docs/loagent-gateway.md"
 LABEL org.opencontainers.image.vendor="WeChat Selkies Project"
 LABEL org.opencontainers.image.licenses="MIT"
 
